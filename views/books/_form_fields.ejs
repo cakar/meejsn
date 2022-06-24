@@ -5,10 +5,11 @@
 <div>
     <label>Author</label>
     <select name="author">
-        <% authors.forEach(author=> { %>
-            <% if( author.id===book.author ){ const selected="selected" } else {selected='' }%>
-                <option <%=selected %> label="<%= author.name %>" value="<%= author.id %>"></option>
-                <% }) %>
+        <% let selected %>
+            <% authors.forEach(author=> { %>
+                <% if( author.id==book.author ){ selected="selected=selected" } else {selected='' }%>
+                    <option <%=selected %> label="<%= author.name %>" value="<%= author.id %>"></option>
+                    <% }) %>
     </select>
 </div>
 <div>
@@ -26,5 +27,5 @@
 </div>
 <div>
     <label>Description</label>
-    <textArea name="description"><%= book.description  %></textArea>
+    <textArea name="description" value="<%= book.description  %>"><%= book.description  %></textArea>
 </div>
