@@ -29,8 +29,8 @@ router.get("/", async (req, res) => {
 })
 
 //new book route
-router.get("/new", async (req, res) => {
-    renderFormPage(res, new Book())
+router.get("/new", async (req, res) => {    
+    renderFormPage(res, new Book(), "new")
 })
 
 //show book route
@@ -53,7 +53,7 @@ router.get("/:id/edit", async (req, res) => {
         // console.log(authors, book.author)
         res.render("books/edit", {book:book, authors:authors})
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 })
 
@@ -87,7 +87,7 @@ router.put('/:id', async (req, res)=>{
         book.pageCount = req.body.pageCount
         book.description = req.body.description
         if(req.body.cover != "null" && req.body.cover != ""){
-            console.log(req.body.cover)
+            // console.log(req.body.cover)
             saveCover(book, req.body.cover)
         }
         await book.save()
