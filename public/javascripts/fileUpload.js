@@ -5,8 +5,8 @@ FilePond.registerPlugin(
 )
 
 FilePond.setOptions({
-    stylePanelAspectRatio: 150/100,
-    imageResizeTartgetWidth: 100,
-    imageResizeTartgetHeight: 150
+    // stylePanelAspectRatio: 150/100,
+    // imageResizeTartgetWidth: 300,
+    // imageResizeTartgetHeight: 450
 })
 FilePond.parse(document.body)
