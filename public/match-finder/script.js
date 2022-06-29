@@ -91,7 +91,7 @@ class MixOrMatch{
         this.matchedCards.push(card2);
         card1.classList.add("matched");
         card2.classList.add("matched");
-        this.audioController.match();
+        audioController.match();
         if(this.matchedCards.length === this.cardsArray.length){
             this.victory();
         }
@@ -125,12 +125,12 @@ class MixOrMatch{
     }
     gameOver(){
         clearInterval(this.countDown);
-        this.audioController.gameOver();
+        audioController.gameOver();
         document.getElementById("game-over-text").classList.add("visible");
     }
     victory(){
         clearInterval(this.countDown);
-        this.audioController.victory();
+        audioController.victory();
         document.getElementById("victory-text").classList.add("visible");
     }
 }
