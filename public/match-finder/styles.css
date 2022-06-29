@@ -1,0 +1,154 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100vh;
+}
+
+body {
+    margin: 0;
+    background: radial-gradient(lightslategray, rgb(62, 43, 134));
+    /* color: */
+}
+
+.page-title {
+    color: rgb(58, 47, 96);
+    font-weight: normal;
+    text-align: center;
+    font-size: 6em;
+}
+
+.game-info {
+    color: rgb(171, 161, 206);
+    font-size: 4em;
+}
+
+.game-info-container {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.game-container {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 10px;
+    margin: 50px;
+    justify-content: center;
+}
+
+.card {
+    position: relative;
+    background-color: rgb(105, 112, 148);
+    /* transparent; */
+    height: 175px;
+    width: 125px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    border-width: 3px;
+    border-style: solid;
+    transition: transform 500ms ease-in-out;
+}
+
+.card.visible .card-back {
+    transform: rotateY(-180deg);
+}
+
+.card.visible .card-front {
+    transform: rotateY(0);
+}
+
+.card.matched .card-value {
+    animation: dance 1s 500ms infinite linear;
+}
+
+@keyframes dance {
+
+    0%,
+    100% {
+        transform: rotate(0);
+    }
+
+    25% {
+        transform: rotate(-30deg);
+    }
+
+    75% {
+        transform: rotate(30deg);
+    }
+}
+
+.card-back {
+    background-color: white;
+    border-color: rgb(171, 161, 206);
+}
+
+.card-front {
+    transform: rotateY(180deg);
+}
+
+.qm {
+    transition: transform 200ms ease-in-out;
+}
+
+.card-back:hover .qm {
+    transform: scale(1.2);
+}
+
+.overlay-text {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    color: rgb(171, 161, 206);
+}
+
+.overlay-text.visible {
+    display: flex;
+    flex-direction: column;
+    animation: overlay-grow 500ms forwards;
+}
+
+@keyframes overlay-grow {
+    from {
+        background-color: rgba(0, 0, 0, 0);
+        font-size: 0;
+    }
+
+    to {
+        background-color: rgba(0, 0, 0, .8);
+        font-size: 10em;
+    }
+}
+
+.click-to-start {
+    font-size: .3em;
+}
+
+@media (max-width:600px) {
+    .game-container {
+        grid-template-columns: repeat(2, auto);
+    }
+
+    .game-info-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
